@@ -350,6 +350,15 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: -0.01em; margin: 0 0 1rem; text-wrap: balance;
 }
 
+/* 页脚上方的收尾（母本 §11.11）：一句收尾话 + 主行动第二次、也是最后一次出现。
+   整页只有一颗主行动，只出现两次——开场一次、这里一次，中间不插第三颗、不做浮动条。 */
+.closing-cta { padding: 3.25rem 0 1rem; border-top: 1px solid var(--rule); }
+.closing-cta .big {
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem); font-weight: 600; line-height: 1.45;
+  letter-spacing: -0.01em; margin: 0; text-wrap: balance;
+}
+.closing-cta .actions { margin-top: 1.25rem; }
+
 /* 联系 */
 .mail {
   display: inline-block; margin-top: .35rem; font-size: 1.1rem;
