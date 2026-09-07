@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naisho — Privacy Policy</title>
+<meta name="description" content="Privacy policy for Naisho.">
+<link rel="canonical" href="https://naisho.space/en/privacy/">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap"><div class="doc">
+
+<header class="masthead">
+  <p class="wordmark"><a href="/en/">Naisho<span class="cn">私话</span></a></p>
+  <nav>
+    <a href="/en/privacy/">Privacy</a><span class="sep">·</span><a href="/en/support/">Support</a><span class="sep">·</span><a href="/privacy/">中文</a>
+  </nav>
+</header>
+
+<div style="padding:2.5rem 0 .5rem">
+  <h1 style="font-size:1.6rem;font-weight:600;letter-spacing:-0.015em;margin:0 0 .5rem">Privacy Policy</h1>
+  <p class="updated">Last updated: 2026-09-06</p>
+</div>
+
+
+<div class="lede">
+  <p>Naisho carries your voice directly between two phones, end-to-end encrypted, with no server in between. It is never recorded and never stored. Apart from the diagnostics described below, we collect nothing.</p>
+</div>
+
+<h3>Your voice</h3>
+<ul>
+  <li>Calls run device to device (peer-to-peer Wi‑Fi, Bluetooth, or Apple's Multipeer transport). <strong>They do not pass through our servers</strong>, we have none.</li>
+  <li>Voice is encrypted in transit.</li>
+  <li><strong>Never recorded, never transcribed, never stored.</strong></li>
+</ul>
+
+<h3>Kept on your phone, never uploaded</h3>
+<ul>
+  <li>Your nickname and avatar emoji.</li>
+  <li>Your friend list (each friend's stable ID, nickname, and when you last talked). It lives only on that phone; on a new phone you become friends again.</li>
+  <li>Your preferences (auto-connect, allow friends to wake you, voice enhancement, and so on).</li>
+</ul>
+<p>One thing worth stating plainly: <strong>your nickname and avatar emoji are broadcast to people nearby who have Naisho open</strong>, which is what "seeing who is nearby" is. It travels only over the local radio range and is not uploaded anywhere.</p>
+
+<h3>Diagnostics (the only data that leaves your phone)</h3>
+<p>When something goes wrong, Naisho can send a diagnostic report to the developer through iCloud (Apple's CloudKit). It contains:</p>
+<ul>
+  <li>An event log: timestamps, connects and disconnects, which link was used, audio and network statistics, permission states, app version and build, iOS version, device model, language setting.</li>
+  <li><strong>Nicknames of you and your friends</strong> appear in that log, along with friends' internal IDs.</li>
+  <li>On a crash, the system-provided crash report is attached as well.</li>
+</ul>
+<p>It <strong>never contains voice content</strong>.</p>
+<p>There are two ways it is sent:</p>
+<ol>
+  <li><strong>You send it</strong>: Settings → Diagnostics → "Run self-test and send".</li>
+  <li><strong>Automatic crash reports</strong>: this setting is <strong>on by default</strong>. If the previous run ended abnormally, the next launch sends one report. You can turn it off at any time in Settings → Diagnostics.</li>
+</ol>
+<p>Reports are stored in the developer's iCloud container, used only to investigate problems, never analysed for profiling and never shared with third parties. To have reports you sent deleted, write to <a href="mailto:hello@naisho.space">hello@naisho.space</a>.</p>
+
+<h3>Permissions</h3>
+<table>
+  <thead><tr><th>Permission</th><th>What it is for</th></tr></thead>
+  <tbody>
+    <tr><td>Microphone</td><td>Captures your voice only while a conversation is running</td></tr>
+    <tr><td>Local Network</td><td>Finds friends nearby and sets up the direct device-to-device link</td></tr>
+    <tr><td>Bluetooth</td><td>Lets a friend wake your Naisho; also serves as a backup voice link</td></tr>
+    <tr><td>Nearby Interaction (UWB)</td><td>Places a friend more accurately, and connects when you touch devices</td></tr>
+    <tr><td>Notifications</td><td>Tells you when a friend is calling</td></tr>
+  </tbody>
+</table>
+<p>Every one of them can be turned off in system settings. Naisho does less without them, but it still works.</p>
+
+<h3>What we do not do</h3>
+<ul>
+  <li>No accounts, no sign-in, no email or phone number collected.</li>
+  <li>No third-party analytics SDK, no advertising, no tracking.</li>
+  <li>Nothing is sold or shared.</li>
+</ul>
+
+<h3>Children</h3>
+<p>Naisho is not designed for children and does not knowingly collect information from them.</p>
+
+<h3>Changes</h3>
+<p>The date at the top changes whenever this page changes in substance.</p>
+
+<h3>Contact</h3>
+<p><a href="mailto:hello@naisho.space">hello@naisho.space</a></p>
+
+<footer>
+  <a href="/en/">Home</a>
+  <a href="/en/support/">Support</a>
+  <span class="copy">© 2026 Changming Wei · naisho.space</span>
+</footer>
+
+</div></div>
+</body>
+</html>

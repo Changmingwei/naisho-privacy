@@ -3,216 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Naisho 隐私政策 · Privacy Policy</title>
-<meta name="description" content="Naisho (私话) 的隐私政策 · Privacy policy for Naisho.">
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #F7F6F2;
-    --surface: #FEFDFB;
-    --text: #1B1A18;
-    --muted: #77736C;
-    --faint: #ABA69D;
-    --rule: #E2DFD8;
-    --accent: #1A1917;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0D0D0B;
-      --surface: #1C1A16;
-      --text: #F3F0EA;
-      --muted: #A8A49B;
-      --faint: #7A756C;
-      --rule: #2E2B25;
-      --accent: #F3F0EA;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
-          "Hiragino Sans", "Noto Sans CJK SC", sans-serif;
-    -webkit-text-size-adjust: 100%;
-  }
-  .wrap { max-width: 44rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
-  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
-  h1 { font-size: 1.6rem; font-weight: 600; margin: 0 0 .5rem; letter-spacing: -0.01em; }
-  .updated { color: var(--faint); font-size: .875rem; margin: 0; }
-  .langs { margin-top: 1.25rem; font-size: .875rem; }
-  .langs a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
-  .langs a:hover { color: var(--text); border-color: var(--muted); }
-  h2 {
-    font-size: 1.25rem; font-weight: 600; margin: 3.5rem 0 1.25rem;
-    padding-top: 2rem; border-top: 1px solid var(--rule); letter-spacing: -0.01em;
-  }
-  h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-  h3 { font-size: 1rem; font-weight: 600; margin: 2.25rem 0 .625rem; }
-  p, li { color: var(--text); }
-  p { margin: 0 0 1rem; }
-  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
-  li { margin-bottom: .4rem; }
-  strong { font-weight: 600; }
-  a { color: var(--accent); }
-  .lede {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
-    padding: 1.125rem 1.25rem; margin: 0 0 1.5rem;
-  }
-  .lede p { margin: 0; }
-  table { border-collapse: collapse; width: 100%; margin: 0 0 1.25rem; font-size: .9375rem; }
-  th, td { text-align: left; padding: .625rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  th { font-weight: 600; color: var(--muted); font-size: .8125rem; letter-spacing: .02em; text-transform: uppercase; }
-  td:first-child { white-space: nowrap; font-weight: 500; }
-  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--faint); font-size: .875rem; }
-  @media (max-width: 480px) {
-    .wrap { padding: 2.5rem 1.125rem 4rem; }
-    td:first-child { white-space: normal; }
-  }
-</style>
+<title>Naisho 私话 · 和身边的人，轻声说话</title>
+<meta name="description" content="戴着 AirPods，也能和身边的人自然地说话。没有服务器，没有账号，不录音。iPhone · TestFlight 测试中。">
+<link rel="canonical" href="https://naisho.space/">
+<link rel="alternate" hreflang="en" href="https://naisho.space/en/">
+<link rel="alternate" hreflang="zh-Hans" href="https://naisho.space/">
+<link rel="stylesheet" href="/style.css">
+<meta property="og:title" content="Naisho 私话 · 和身边的人，轻声说话">
+<meta property="og:description" content="戴着 AirPods，也能和身边的人自然地说话。没有服务器，没有账号，不录音。">
+<meta property="og:url" content="https://naisho.space/">
+<meta property="og:type" content="website">
 </head>
 <body>
 <div class="wrap">
 
-<header>
-  <h1>Naisho 隐私政策 · Privacy Policy</h1>
-  <p class="updated">最后更新 / Last updated: 2026-09-06</p>
-  <p class="langs"><a href="#zh">中文</a> · <a href="#en">English</a></p>
-</header>
+  <header class="masthead">
+    <p class="wordmark"><a href="/">Naisho<span class="cn">私话</span></a></p>
+    <nav>
+      <a href="/privacy/">隐私</a><span class="sep">·</span><a href="/support/">支持</a><span class="sep">·</span><a href="/en/">EN</a>
+    </nav>
+  </header>
 
-<h2 id="zh">中文</h2>
+  <div class="hero">
+    <h1>和身边的人，轻声说话。</h1>
+    <p class="sub">戴着 AirPods，也能和身边的人自然地说话。声音只从你的手机到 TA 的手机。</p>
+    <p class="fine">两个人都开着降噪，耳机不用摘。</p>
+    <div class="actions">
+      <a class="btn primary" href="https://testflight.apple.com/join/V8FKCAMr" rel="noopener">加入 TestFlight 测试</a>
+      <a class="btn ghost" href="#how-to">它是怎么工作的 ↓</a>
+    </div>
+    <p class="fine" style="margin-top:.9rem">还没上架 App Store。TestFlight 是苹果发测试版的 app，装好就能用，有新版会自己更新。</p>
+  </div>
 
-<div class="lede">
-  <p>Naisho 的语音在两台手机之间直接传，端到端加密，不经过任何服务器，也不录音、不保存。除了下面写明的「诊断」，我们不收集你的任何东西。</p>
+  <section>
+    <p class="eyebrow">为什么</p>
+    <h2>那些正常说话行不通的时刻。</h2>
+    <ul class="scenes">
+      <li><b>嘈杂的街上</b> — 城市再吵，也听得见彼此。并排走着，还得一遍遍重复。</li>
+      <li><b>电车上</b> — 说话，不用让整节车厢都听见。说一句话要先摘一只耳机，还要等对方也摘。</li>
+      <li><b>山路上</b> — 一起徒步的人，不该靠喊。前后隔几步，不用回头。</li>
+      <li><b>安静的地方</b> — 保持安静，照常说话。博物馆、图书馆、深夜。</li>
+    </ul>
+    <p class="closing">每一次的结局都一样：<b>摘下耳机</b>，或者算了。Naisho 把这个动作去掉。</p>
+  </section>
+
+  <section id="how-to">
+    <p class="eyebrow">它怎么工作</p>
+    <h2>在身边，就是不一样。</h2>
+    <div class="howto">
+      <div class="step">
+        <span class="n">01<em>你的手机</em></span>
+<div class="shot s1" aria-hidden="true">
+  <div class="top"></div>
+  <div class="hdr"><span class="wm">Naisho</span><span class="cap"><i>🐼</i>王悦</span></div>
+  <div class="field">
+    <i class="dot" style="left:116px;top:24px;opacity:0.3"></i><i class="dot" style="left:161px;top:48px;opacity:0.2"></i><i class="dot" style="left:165px;top:100px;opacity:0.22"></i><i class="dot" style="left:133px;top:144px;opacity:0.27"></i><i class="dot" style="left:81px;top:151px;opacity:0.19"></i><i class="dot" style="left:28px;top:132px;opacity:0.22"></i><i class="dot" style="left:19px;top:81px;opacity:0.16"></i><i class="dot" style="left:38px;top:49px;opacity:0.24"></i><i class="dot" style="left:152px;top:28px;opacity:0.27"></i><i class="dot" style="left:34px;top:109px;opacity:0.18"></i>
+    <div class="mist"></div>
+    <svg class="ripples" viewBox="0 0 318 318" aria-hidden="true"><circle class="rp rp1" cx="159" cy="159"/><circle class="rp rp2" cx="159" cy="159"/><circle class="rp rp3" cx="159" cy="159"/></svg>
+    <svg class="arc" viewBox="-65 -65 130 130" aria-hidden="true"><defs><linearGradient id="arcfade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".12" stop-color="currentColor" stop-opacity=".28"/><stop offset=".88" stop-color="currentColor" stop-opacity=".28"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs><path d="M-51.1 -29.5 A59 59 0 0 1 51.1 -29.5" stroke="url(#arcfade)"/></svg>
+    <div class="orb"><div class="face">🐼</div></div>
+    <div class="peer"><div class="fw"><i class="halo"></i><div class="face">😎</div><i class="dust" style="--dx:14px;--dy:-9px;animation-delay:-0s"></i><i class="dust" style="--dx:18px;--dy:4px;animation-delay:-0.15s"></i><i class="dust" style="--dx:9px;--dy:-16px;animation-delay:-0.3s"></i><i class="dust" style="--dx:20px;--dy:-3px;animation-delay:-0.45s"></i></div><b>陈浩</b></div>
+  </div>
+  <div class="status x"><span class="a">正在寻找附近的同伴…</span><span class="b">点一下对方头像开始对话</span></div>
+  <div class="grow"></div>
+  <div class="last">
+    <div class="lh"><b>上次的同伴</b><span class="see">查看全部<svg width="4" height="7" viewBox="0 0 6 10" fill="none" aria-hidden="true"><path d="M1 1l3.6 4L1 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    <div class="card">
+      <div class="face">😎</div>
+      <div class="txt"><b>陈浩</b><span class="sub x num"><em class="a">上次对话 1小时前</em><em class="b">在附近</em></span></div>
+      <div class="btn x"><span class="a">叫醒</span><span class="b">连接</span></div>
+    </div>
+  </div>
+  <div class="how"><svg width="9" height="9" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="4.8" r=".85" fill="currentColor"/></svg>Naisho 如何工作</div>
+  <div class="bot"></div>
 </div>
-
-<h3>你的声音</h3>
-<ul>
-  <li>通话走设备到设备的连接（点对点 Wi‑Fi、蓝牙，或 Apple 的 Multipeer 传输），<strong>不经过我们的服务器</strong>，我们没有服务器。</li>
-  <li>语音是加密传输的。</li>
-  <li><strong>不录音、不转写、不保存。</strong>说完就没有了。</li>
-</ul>
-
-<h3>存在你手机上、不上传的东西</h3>
-<ul>
-  <li>你的昵称和头像表情。</li>
-  <li>你的同伴名单（每一位的稳定 ID、昵称、上次说话的时间）。名单只存在这台手机上，换新手机要重新成为同伴。</li>
-  <li>你的偏好（自动连接、允许被叫醒、语音增强等）。</li>
-</ul>
-<p>有一点要说清楚：<strong>你的昵称和头像表情会广播给附近打开着 Naisho 的人</strong>，这正是「看见附近有谁」这件事本身。它只在附近的无线范围内传播，不上传到任何地方。</p>
-
-<h3>诊断（唯一会离开你手机的数据）</h3>
-<p>出问题时，Naisho 可以把一份诊断记录经 iCloud（Apple 的 CloudKit）发给开发者。它包含：</p>
-<ul>
-  <li>事件日志：时间戳、连接与断开、用了哪条链路、音频与网络的统计数字、权限状态、App 版本与构建号、iOS 版本、机型、语言设置。</li>
-  <li>日志里会出现<strong>你和同伴的昵称</strong>，以及同伴的内部 ID。</li>
-  <li>崩溃时还会附上系统给的崩溃报告。</li>
-</ul>
-<p><strong>不包含语音内容</strong>，任何时候都不包含。</p>
-<p>发送有两种：</p>
-<ol>
-  <li><strong>你自己按的</strong>：设置 → 诊断 → 「自检并发送」。</li>
-  <li><strong>自动发送崩溃报告</strong>：这一项<strong>默认开着</strong>。上一次运行非正常结束（崩溃等）时，下次启动会自动发一份。设置 → 诊断 里可以随时关掉。</li>
-</ol>
-<p>诊断记录存在开发者的 iCloud 容器里，只用于排查问题，不做分析、不做画像、不给任何第三方。想删掉你发过的记录，写信到 <a href="mailto:channing.wei@icloud.com">channing.wei@icloud.com</a> 说一声就行。</p>
-
-<h3>权限</h3>
-<table>
-  <thead><tr><th>权限</th><th>用来做什么</th></tr></thead>
-  <tbody>
-    <tr><td>麦克风</td><td>只在对话进行时采集你的声音</td></tr>
-    <tr><td>本地网络</td><td>发现附近的同伴、建立设备到设备的直连</td></tr>
-    <tr><td>蓝牙</td><td>让同伴叫醒你的 Naisho；也作为备用的语音链路</td></tr>
-    <tr><td>附近交互（UWB）</td><td>把同伴的位置放得更准，以及碰一碰设备即连</td></tr>
-    <tr><td>通知</td><td>同伴叫你时提醒你</td></tr>
-  </tbody>
-</table>
-<p>每一项都可以在系统设置里关掉；关掉之后 Naisho 会少一些能力，但仍然能用。</p>
-
-<h3>我们不做的事</h3>
-<ul>
-  <li>没有账号、不需要登录、不收集邮箱或手机号。</li>
-  <li>没有第三方分析 SDK、没有广告、没有追踪。</li>
-  <li>不出售、不共享任何数据。</li>
-</ul>
-
-<h3>儿童</h3>
-<p>Naisho 不面向儿童设计，也不会有意收集儿童的信息。</p>
-
-<h3>变更</h3>
-<p>这一页有实质改动时会更新顶部的日期。</p>
-
-<h3>联系</h3>
-<p><a href="mailto:channing.wei@icloud.com">channing.wei@icloud.com</a></p>
-
-<h2 id="en">English</h2>
-
-<div class="lede">
-  <p>Naisho carries your voice directly between two phones, end-to-end encrypted, with no server in between. It is never recorded and never stored. Apart from the diagnostics described below, we collect nothing.</p>
+        <p>打开就看见此刻在附近的同伴，还有上次说过话的人。</p>
+      </div>
+      <div class="step">
+        <span class="n">02<em>TA 的手机</em></span>
+<div class="shot s2" aria-hidden="true">
+  <div class="c2">
+    <div class="duo"><div class="glow"></div><div class="face">😎</div><div class="link"><i style="left:4.4px"></i><i style="left:9.7px"></i><i style="left:15.0px"></i><i style="left:20.2px"></i><i style="left:25.6px"></i><i style="left:30.9px"></i><i style="left:36.2px"></i><i style="left:41.5px"></i><i style="left:46.8px"></i><i style="left:52.0px"></i></div><div class="face">🐼</div></div>
+    <b class="nm">王悦</b>
+    <div class="ask">想和你说话</div>
+    <div class="once">第一次连接，先确认一下彼此</div>
+    <div class="fill">确认并加入</div>
+    <div class="pill">暂时不用</div>
+    <div class="fn">两边都回到搜索</div>
+  </div>
 </div>
+        <p>你点一下，TA 那边也点一下——两下齐了才连得上。</p>
+      </div>
+      <div class="step">
+        <span class="n">03<em>两台一样</em></span>
+<div class="shot s3" aria-hidden="true">
+  <div class="top"></div>
+  <div class="q"><i></i><i></i><i></i></div>
+  <div class="grow"></div>
+  <div class="pf">
+    <div class="mist"></div>
+    <div class="fd"><i style="opacity:.10;transform:translateY(1.5px)"></i><i style="opacity:.16"></i><i style="opacity:.26;transform:translateY(-1px)"></i><i style="opacity:.38"></i><i style="opacity:.46;transform:translateY(1px)"></i></div>
+    <div class="pair">
+      <div class="me"><div class="face">🐼</div><span>你</span></div>
+      <div class="sp"><i class="glow"></i><i class="df d1"></i><i class="df d2"></i><i class="df d3"></i><div class="face">😎</div><b>陈浩</b></div>
+    </div>
+    <div class="fd"><i style="opacity:.10;transform:translateY(-1.5px)"></i><i style="opacity:.16"></i><i style="opacity:.26;transform:translateY(1px)"></i><i style="opacity:.38"></i><i style="opacity:.46;transform:translateY(-1px)"></i></div>
+  </div>
+  <div class="timer num">00:47</div>
+  <div class="grow"></div>
+  <div class="vol"><span>陈浩的音量</span><div class="track"><i></i><i class="on"></i><i class="th"></i></div></div>
+  <div class="mic"><span>麦克风</span><em>标准</em><span style="flex:none;color:var(--sh-t3);margin-left:5px"><svg width="4" height="7" viewBox="0 0 6 10" fill="none" aria-hidden="true"><path d="M1 1l3.6 4L1 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  <div class="dock">
+    <div class="g">
+      <div class="k"><div class="ctl"><svg width="11" height="13" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="7" y="1.5" width="8" height="13" rx="4" stroke-width="1.6"/><path d="M3.5 11.5a7.5 7.5 0 0015 0" stroke-width="1.6" stroke-linecap="round"/><path d="M11 19v5" stroke-width="1.6" stroke-linecap="round"/></svg></div>静音</div>
+      <div class="k"><div class="ctl"><svg width="13" height="12" viewBox="0 0 26 24" fill="none" aria-hidden="true"><path d="M6.5 6.5a9 9 0 000 11M19.5 6.5a9 9 0 010 11" stroke-width="1.6" stroke-linecap="round"/><path d="M13 8l5 9H8l5-9z" stroke-width="1.6" stroke-linejoin="round"/></svg></div>AirPods</div>
+    </div>
+    <div class="k end"><div class="ctl"><svg width="12" height="12" viewBox="0 0 26 26" aria-hidden="true"><path d="M3.4 11.6c5-4 13.8-4 18.8 0l.5.4v3.4c0 1.1-1 2-2.1 1.8l-3.5-.7a1.9 1.9 0 01-1.5-1.9v-1.9a13.6 13.6 0 00-5.6 0v1.9c0 .9-.6 1.7-1.5 1.9l-3.5.7A1.9 1.9 0 013 15.4V12l.4-.4z"/></svg></div>结束</div>
+  </div>
+  <div class="bot"></div>
+</div>
+        <p>连上就直接说话：耳机不用摘，两个人可以同时说。</p>
+      </div>
+    </div>
+  </section>
 
-<h3>Your voice</h3>
-<ul>
-  <li>Calls run device to device (peer-to-peer Wi‑Fi, Bluetooth, or Apple's Multipeer transport). <strong>They do not pass through our servers</strong>, we have none.</li>
-  <li>Voice is encrypted in transit.</li>
-  <li><strong>Never recorded, never transcribed, never stored.</strong></li>
-</ul>
+  <section>
+    <p class="eyebrow">谁看得见，谁听得见</p>
+    <h2>一小块私人的场。</h2>
+    <p>附近开着 Naisho 的人看得到你的名字和头像表情——你们就是这样找到彼此的。没有人能单方面和你连上，要两个人各点一次。<b>你永远知道谁在听：就是你点的那个人。</b></p>
+  </section>
 
-<h3>Kept on your phone, never uploaded</h3>
-<ul>
-  <li>Your nickname and avatar emoji.</li>
-  <li>Your friend list (each friend's stable ID, nickname, and when you last talked). It lives only on that phone; on a new phone you become friends again.</li>
-  <li>Your preferences (auto-connect, allow friends to wake you, voice enhancement, and so on).</li>
-</ul>
-<p>One thing worth stating plainly: <strong>your nickname and avatar emoji are broadcast to people nearby who have Naisho open</strong>, which is what "seeing who is nearby" is. It travels only over the local radio range and is not uploaded anywhere.</p>
+  <section id="how">
+    <p class="eyebrow">它做的是什么</p>
+    <h2>六件事，都是真的</h2>
+    <div class="facts">
+      <div class="fact">
+        <span class="n">01</span>
+        <h3>两台手机直接连</h3>
+        <p>语音不经过任何服务器——<b>我们没有服务器</b>。哪条路通就走哪条：不用蜂窝网络，不用路由器，地铁隧道里照样能用，也不产生一点流量。</p>
+        <p class="fine">用到的是 Wi‑Fi Aware、点对点 Wi‑Fi 与蓝牙。</p>
+      </div>
+      <div class="fact">
+        <span class="n">02</span>
+        <h3>没有账号，语音不落地</h3>
+        <p>不用注册、不用登录，不收邮箱也不收手机号。说过的话<b>不录音、不转写、不保存</b>——说完就没有了。</p>
+        <p class="fine">唯一会离开手机的是诊断记录，只在你按下「发送」、或允许自动发送崩溃报告时。</p>
+      </div>
+      <div class="fact">
+        <span class="n">03</span>
+        <h3>两个人可以同时说</h3>
+        <p>全双工，<b>没有一颗要按住的键</b>。有人说话时，正在听的音乐自动压低成背景音，说完自己回来；播客暂停，结束后恢复。</p>
+        <p class="fine">人声增强让对方的音量更稳；你也可以单独调 TA 的音量，不动你的音乐。麦克风只在对话进行时占用，结束立刻释放。</p>
+      </div>
+      <div class="fact">
+        <span class="n">04</span>
+        <h3>看得见附近有谁</h3>
+        <p>打开就能看见此刻在附近的同伴。两台 iPhone 都有超宽带时，同伴在场里的位置反映 TA 有多远——越近，越靠近你。<b>只有远近，没有方向：Naisho 不指路。</b></p>
+        <p class="fine">对方的 Naisho 没开着，可以把它叫醒。</p>
+      </div>
+      <div class="fact">
+        <span class="n">05</span>
+        <h3>同伴名单只在这台手机上</h3>
+        <p>谁是你的同伴、上次什么时候说过话，<b>只存在你自己的手机里</b>，不上传到任何地方。换一台手机，要重新成为同伴。</p>
+              </div>
+      <div class="fact">
+        <span class="n">06</span>
+        <h3>连接要两个人各点一次</h3>
+        <p>第一次见面，一个人点对方，另一个人点「确认并加入」。<b>两次都齐了才连上。</b></p>
+        <p class="fine">同伴关系从这一刻开始，也可以随时在设置里全部移除。</p>
+      </div>
+    </div>
+  </section>
 
-<h3>Diagnostics (the only data that leaves your phone)</h3>
-<p>When something goes wrong, Naisho can send a diagnostic report to the developer through iCloud (Apple's CloudKit). It contains:</p>
-<ul>
-  <li>An event log: timestamps, connects and disconnects, which link was used, audio and network statistics, permission states, app version and build, iOS version, device model, language setting.</li>
-  <li><strong>Nicknames of you and your friends</strong> appear in that log, along with friends' internal IDs.</li>
-  <li>On a crash, the system-provided crash report is attached as well.</li>
-</ul>
-<p>It <strong>never contains voice content</strong>.</p>
-<p>There are two ways it is sent:</p>
-<ol>
-  <li><strong>You send it</strong>: Settings → Diagnostics → "Run self-test and send".</li>
-  <li><strong>Automatic crash reports</strong>: this setting is <strong>on by default</strong>. If the previous run ended abnormally, the next launch sends one report. You can turn it off at any time in Settings → Diagnostics.</li>
-</ol>
-<p>Reports are stored in the developer's iCloud container, used only to investigate problems, never analysed for profiling and never shared with third parties. To have reports you sent deleted, write to <a href="mailto:channing.wei@icloud.com">channing.wei@icloud.com</a>.</p>
+  <section>
+    <p class="eyebrow">说清楚一点</p>
+    <h2>加密这件事，分两条说</h2>
+    <div class="split">
+      <div class="col">
+        <p class="label">语音</p>
+        <p>两台手机之间的<b>每一条语音链路都是加密的</b>。Apple 的 Multipeer 链路强制加密；我们自己建的三条路各有一把独立的会话密钥。</p>
+      </div>
+      <div class="col">
+        <p class="label">叫醒</p>
+        <p><b>这一条不是加密的。</b>「叫醒」是一段签名过的蓝牙广播：签名证明它确实来自你的同伴，但内容没有加密，里面带着发起人的昵称和头像表情，附近的设备读得到。</p>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:1.25rem">我们把这两件事分开写，因为它们确实是两件事。完整说明见<a href="/privacy/">隐私政策</a>。</p>
+  </section>
 
-<h3>Permissions</h3>
-<table>
-  <thead><tr><th>Permission</th><th>What it is for</th></tr></thead>
-  <tbody>
-    <tr><td>Microphone</td><td>Captures your voice only while a conversation is running</td></tr>
-    <tr><td>Local Network</td><td>Finds friends nearby and sets up the direct device-to-device link</td></tr>
-    <tr><td>Bluetooth</td><td>Lets a friend wake your Naisho; also serves as a backup voice link</td></tr>
-    <tr><td>Nearby Interaction (UWB)</td><td>Places a friend more accurately, and connects when you touch devices</td></tr>
-    <tr><td>Notifications</td><td>Tells you when a friend is calling</td></tr>
-  </tbody>
-</table>
-<p>Every one of them can be turned off in system settings. Naisho does less without them, but it still works.</p>
+  <div class="honest">
+    <p class="big">Naisho 在一台手机上什么都做不了。</p>
+    <p>它必须两个人都装，而且只在近距离工作。这不是一个等着被修好的限制——这是把服务器、账号和录音都拿掉之后，剩下的那个东西。</p>
+    <p class="fine">内緒（naisho）＝ 只说给一个人听的话。它给你的就是这么一小块地方，里面只有你们两个人。</p>
+  </div>
 
-<h3>What we do not do</h3>
-<ul>
-  <li>No accounts, no sign-in, no email or phone number collected.</li>
-  <li>No third-party analytics SDK, no advertising, no tracking.</li>
-  <li>Nothing is sold or shared.</li>
-</ul>
+  <section>
+    <p class="eyebrow">为什么做它</p>
+    <h2>并排走着，还是得喊。</h2>
+    <p>我们一直撞上同一个奇怪的问题：并排走着，两个人都戴着 AirPods，还是得喊。于是开始做 Naisho——并且在它必须成立的地方测它：电车上、街上、跑步时，用两台真实的手机。</p>
+  </section>
 
-<h3>Children</h3>
-<p>Naisho is not designed for children and does not knowingly collect information from them.</p>
+  <section>
+    <p class="eyebrow">说点什么</p>
+    <h2>哪里坏了，或者只是想说它好不好用</h2>
+    <p>少了什么、哪里不对、或者只是想说说感受——写信过来。这是一个人做的 app，信我自己读。</p>
+    <a class="mail" href="mailto:hello@naisho.space">hello@naisho.space</a>
+  </section>
 
-<h3>Changes</h3>
-<p>The date at the top changes whenever this page changes in substance.</p>
+  <div class="closing-cta">
+    <p class="big">轻声说，别走散。</p>
+    <div class="actions">
+      <a class="btn primary" href="https://testflight.apple.com/join/V8FKCAMr" rel="noopener">加入 TestFlight 测试</a>
+    </div>
+  </div>
 
-<h3>Contact</h3>
-<p><a href="mailto:channing.wei@icloud.com">channing.wei@icloud.com</a></p>
+  <div class="spec">
+    <span>iPhone · iOS 18 或更新 · 两台都要装</span>
+    <span>建议戴耳机 · AirPods 最好</span>
+    <span>简体中文 · 繁體中文 · English · 日本語 · Español</span>
+    <span>没有广告 · 没有第三方分析 · 没有追踪</span>
+  </div>
 
-<footer>
-  Naisho · 私话 — a walkie-talkie for two people already near each other.
-</footer>
+  <footer>
+    <a href="/privacy/">隐私政策</a>
+    <a href="/support/">支持</a>
+    <a href="/en/">English</a>
+    <span class="copy">© 2026 Changming Wei · naisho.space</span>
+  </footer>
 
 </div>
 </body>
