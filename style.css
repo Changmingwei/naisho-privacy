@@ -49,16 +49,31 @@ body {
 
 /* ── 页眉 ─────────────────────────────────────────── */
 .masthead {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 1rem;
   padding: 1.75rem 0 1.5rem; border-bottom: 1px solid var(--rule);
 }
 .wordmark {
   font: 700 1.35rem/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.015em; margin: 0;
 }
-.wordmark a { color: inherit; border: none; display: inline-flex; align-items: center; gap: .5rem; }
+/* **这一行是普通的行内排版，不是 flex**（09-07，Changming：「logo 和右侧的高度、
+   间距之类的也不一致」）。原来 `.wordmark a` 是 `inline-flex`，而 **flex 容器的基线取自
+   它第一个 flex 项**——也就是那张 28 px 的图，图片的基线是它的**盒底**。于是页眉那条
+   `align-items: baseline` 拿去对齐的是*图片的底边*（y=56.0），而不是「Naisho」的文字基线
+   （54.2），导航整体因此比字标低 4.8 px。
+   行内排版没有这个问题：行盒的基线本来就是文字基线，图片靠 `vertical-align` 挂上去、
+   不参与基线计算。于是「Naisho」和「Privacy」真的坐在同一条线上。 */
+.wordmark a { color: inherit; border: none; }
+/* `<picture>` 只负责按深浅挑图源，不该在排版里多一层盒子——`display: contents`
+   让它自己那层消失，`img` 直接落进字标那一行。 */
+.wordmark picture { display: contents; }
 /* 名字在五种语言里都只有一个：Naisho。字标里不挂译名。 */
-.logo { display: block; width: 28px; height: 28px; border-radius: 6px; }
+/* -.32em：字标 1.35rem = 21.6 px，这个位移把 28 px 的图**视觉上**居中在文字的中线上
+   （图心 baseline−7.1，字心 baseline−7.8），同时它整个待在基线之外，不动基线本身。 */
+.logo {
+  display: inline-block; width: 28px; height: 28px; border-radius: 6px;
+  vertical-align: -.32em; margin-right: .5rem;
+}
 /* 深色版是**另一张图**，不是把亮色那张反相（`<picture>` + `prefers-color-scheme` 换源，零脚本）。
    09-07 一度用的是 `filter: invert(1)`，当时的理由写着「墨 + 透明，反相只把墨翻成浅色，
    形状一模一样」——**那句话是错的，而且我验的是 alpha 通道，不是它长什么样**。
@@ -108,8 +123,12 @@ body {
    对齐基线——三样东西坐在同一条基线上，而不是各自的盒底。 */
 .masthead nav {
   margin-left: auto; font-size: .9rem; color: var(--muted);
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .4rem;
 }
+/* 页眉在 iPhone 12–16 那一档（390）上曾经差 1.6 px 就折成两行：字标 106 + 导航 202
+   + 列间距 20 = 328.6，而可用只有 327。两行不是不能看，但左上一个小 logo、右下
+   一行导航是散的。所以这一处的两个间距（页眉 1rem、导航 .4rem）是**按宽度算出来的**，
+   不是随手调的——改它们之前先量一遍 375 / 390 会不会折。 */
 .masthead nav a { color: inherit; border-bottom: none; }
 .masthead nav a:hover { color: var(--text); }
 .masthead nav .sep { opacity: .45; margin: 0; }
