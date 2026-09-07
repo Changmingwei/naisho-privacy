@@ -5,6 +5,15 @@
 /privacy.html   /privacy/   301
 /privacy-policy /privacy/   301
 /support.html   /support/   301
-/home-zh        /           301
-/home-zh.html   /           301
 /privacy/index.html  /privacy/  301
+
+# 2026-09-07 换了默认语言：根上从中文改成英文，中文搬到 /cn/（Changming）。
+# 于是 /en/ 这一整支成了老地址——**一条 splat 全领走**：
+#   /en/ → /、/en/privacy/ → /privacy/、/en/support/ → /support/。
+# 这些地址在 TestFlight 的邀请里、在几次分享的链接里都出现过，一条都不许断。
+/en     /       301
+/en/*   /:splat 301
+
+# 中文首页的老写法跟着中文一起搬。
+/home-zh        /cn/        301
+/home-zh.html   /cn/        301

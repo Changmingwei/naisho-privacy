@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://naisho.space/</loc></url>
-  <url><loc>https://naisho.space/en/</loc></url>
   <url><loc>https://naisho.space/privacy/</loc></url>
-  <url><loc>https://naisho.space/en/privacy/</loc></url>
   <url><loc>https://naisho.space/support/</loc></url>
-  <url><loc>https://naisho.space/en/support/</loc></url>
+  <url><loc>https://naisho.space/cn/</loc></url>
+  <url><loc>https://naisho.space/cn/privacy/</loc></url>
+  <url><loc>https://naisho.space/cn/support/</loc></url>
 </urlset>
