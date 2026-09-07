@@ -1,8 +1,8 @@
-# naisho-privacy → naisho.chat 的站点
+# naisho-privacy → naisho.space 的站点
 
-这个仓库原来只放隐私政策一页，2026-09-07 起变成 **naisho.chat 整个站点**的源码。
+这个仓库原来只放隐私政策一页，2026-09-07 起变成 **naisho.space 整个站点**的源码。
 托管走 **Cloudflare Pages**（连的就是这个仓库，`main` 分支，构建输出目录 `/`），
-域名 `naisho.chat`。全站是静态文件，没有构建步骤，**一行第三方脚本都没有**。
+域名 `naisho.space`。全站是静态文件，没有构建步骤，**一行第三方脚本都没有**。
 
 ## 现在有什么
 
@@ -19,7 +19,7 @@
 App Store 审核会去抓 ASC 里填的那两个隐私政策 URL。**任何时候都不许出现 404。**
 
 1. **第一段（已完成）**：新增 `/privacy/`，根上那份不动。老地址、新地址同时活着，内容一样。
-2. **第二段（等域名和 Pages 都好了）**：改 ASC 里那两处 URL 指向 `https://naisho.chat/privacy/`，
+2. **第二段（等域名和 Pages 都好了）**：改 ASC 里那两处 URL 指向 `https://naisho.space/privacy/`，
    **确认新地址返回 200 之后**，再把根上那份换成介绍页。
 
 ## 记录源在哪
@@ -28,7 +28,7 @@ App Store 审核会去抓 ASC 里填的那两个隐私政策 URL。**任何时�
 改了 app 的数据行为（尤其是诊断上传），要三处一起改：那份 markdown、这里的 `/privacy/`、
 以及 App Store Connect 的 App 隐私问卷。
 
-整件事的来龙去脉、以及只有域名持有人能点的那几步，写在 `AirBuddy/docs/naisho-chat.md`。
+整件事的来龙去脉、以及只有域名持有人能点的那几步，写在 `AirBuddy/docs/naisho-space.md`。
 
 ## 改了怎么上线
 

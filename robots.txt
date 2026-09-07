@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://naisho.chat/sitemap.xml
+Sitemap: https://naisho.space/sitemap.xml
