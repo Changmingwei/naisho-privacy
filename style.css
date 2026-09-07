@@ -121,16 +121,215 @@ p:last-child { margin-bottom: 0; }
 }
 .fact p { margin-bottom: .5rem; }
 
-/* 怎么用：三步一张图。三张是一个序列，所以编号在这里是信息，不是装饰 */
+/* ── 怎么用：三块真屏 ──────────────────────────────────────────────
+   纯 HTML + CSS，零脚本、零外链、零位图。屏跟着访客的主题翻（prefers-color-scheme）——
+   app 的纸 #F7F6F2 / #0D0D0B 和站点的 --bg 本来就是同一块材料，屏里那一套是 app 自己的
+   令牌（画布《材料与字阶》），用 --sh-* 单独挂在 .shot 上，不和站点的 --text / --prose 混。
+   减弱动态：沿用本文件底部那条全局 animation:none —— 每个会动的东西，静止态都写在
+   基础样式里（有人在场 / 说话中），动画一关剩下的就是那一帧，不另写一条。 */
 .howto { display: grid; gap: 2.1rem; }
 @media (min-width: 40rem) { .howto { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.75rem; } }
 .step .n {
   display: block; font-size: .72rem; color: var(--faint);
   font-variant-numeric: tabular-nums; margin-bottom: .6rem;
 }
-/* 图跟着正文的墨走：SVG 里只有 currentColor 一个颜色来源，深浅两套自动对调 */
-.step svg { display: block; width: 100%; height: auto; color: var(--text); }
+.step .n em { font-style: normal; margin-left: .5em; }
 .step p { font-size: .9rem; line-height: 1.7; color: var(--prose); margin: .75rem 0 0; }
+.step .shot { margin: 0 auto; }
+
+/* 屏：402 × 874 的真机按 211 宽重排（不是缩图——16 号正文缩到 8.4 号没人读得了）。
+   几何等比 0.525，字号设下限：主文字 11–12.5，次要 10，三级 9.5。 */
+.shot {
+  --sh-bg: #F7F6F2; --sh-ink: #1A1917; --sh-i: 26, 25, 23;
+  --sh-t2: #77736C; --sh-t3: #ABA69D;
+  --sh-card: #FEFDFB; --sh-face: #FEFDFB; --sh-chip: #EEECE6; --sh-cap: #ECEAE5;
+  --sh-orb1: #FEFDFB; --sh-orb2: #FCFCFA; --sh-orb3: #F3F1EC; --sh-rim: rgba(254, 253, 251, .9);
+  --sh-track: #DDDAD4; --sh-thumb: #FEFDFB; --sh-inv: #F7F6F2;
+  --sh-sh: 27, 26, 24; --sh-glow: 254, 253, 251;
+  position: relative; width: 211px; height: 458px; overflow: hidden; border-radius: 26px;
+  background: var(--sh-bg); color: var(--sh-ink);
+  box-shadow: 0 0 0 1px var(--rule), 0 2px 6px rgba(var(--sh-sh), .05), 0 18px 44px rgba(var(--sh-sh), .08);
+  display: flex; flex-direction: column; align-items: stretch;
+  font-size: 10px; line-height: 1.3; font-weight: 400; letter-spacing: 0; text-align: left;
+  -webkit-font-smoothing: antialiased; user-select: none; -webkit-user-select: none;
+}
+@media (prefers-color-scheme: dark) {
+  .shot {
+    --sh-bg: #0D0D0B; --sh-ink: #F3F0EA; --sh-i: 243, 240, 234;
+    --sh-t2: #A8A49B; --sh-t3: #7A756C;
+    --sh-card: #1C1A16; --sh-face: #35312A; --sh-chip: #2E2B25; --sh-cap: #2E2B25;
+    --sh-orb1: #2E2A22; --sh-orb2: #26231D; --sh-orb3: #191713; --sh-rim: rgba(243, 240, 234, .14);
+    --sh-track: #3A362F; --sh-thumb: #EDE9E1; --sh-inv: #0D0D0B;
+    --sh-sh: 0, 0, 0; --sh-glow: 46, 42, 34;
+  }
+}
+/* 三列时格子只有 178–211 宽（视口 40–46rem），窄屏叠起来时放大一档。zoom 是重排不是栅格缩放，字仍然清楚。 */
+@media (min-width: 40rem) and (max-width: 45.99rem) { .shot { zoom: .84; } }
+@media (max-width: 39.99rem) { .shot { zoom: 1.24; } }
+
+.shot * { box-sizing: border-box; margin: 0; padding: 0; }
+.shot svg { display: block; width: auto; height: auto; }
+.shot .grow { flex: 1 1 auto; }
+.shot .num { font-variant-numeric: tabular-nums; }
+.shot .x { display: grid; } .shot .x > * { grid-area: 1 / 1; }
+.shot .face {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  border-radius: 50%; background: var(--sh-face); line-height: 1; font-style: normal;
+}
+.shot .wm { font: 700 15px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: .2px; color: var(--sh-ink); }
+.shot .fd { display: flex; align-items: center; gap: 7px; }
+.shot .fd i { display: block; width: 3px; height: 3px; border-radius: 50%; background: var(--sh-ink); }
+
+/* ── 01 首页：搜索中 → 有人进来了 → 又走了（18 秒一圈，画布《搜索页 · 动效说明》分镜 ①②⑤⑥） ── */
+.s1 .top { height: 30px; flex: none; }
+.s1 .hdr { height: 24px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 0 13px; }
+.s1 .cap {
+  display: flex; align-items: center; gap: 4px; height: 20px; padding: 0 8px 0 5px;
+  border-radius: 10px; background: var(--sh-cap); font-size: 9.5px; color: var(--sh-ink); white-space: nowrap;
+}
+.s1 .cap i { font-style: normal; font-size: 11px; line-height: 1; }
+.s1 .field { position: relative; height: 183px; flex: none; margin-top: 8px; }
+.s1 .dot { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--sh-ink); }
+.s1 .mist {
+  position: absolute; left: 50%; top: 50%; width: 160px; height: 160px; margin: -80px 0 0 -80px; border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(var(--sh-glow), .55) 0%, rgba(var(--sh-glow), .22) 58%, rgba(var(--sh-glow), 0) 86%);
+}
+/* 三道等势线：越往外越淡、越往外越断（代码 FieldRipples.bands：[40,.8] → [6,4] → [2,7]），没有一圈是闭合的 */
+.s1 .ripples { position: absolute; left: 50%; top: 50%; width: 167px; height: 167px; margin: -83.5px 0 0 -83.5px; overflow: visible; opacity: 0; animation: s1-ripples 18s linear infinite; }
+.s1 .rp { fill: none; stroke: rgb(var(--sh-i)); stroke-width: 1.6; r: 124px; opacity: 0; stroke-dasharray: 40 .8; animation: s1-rp 4.4s cubic-bezier(.22, .61, .36, 1) infinite; }
+.s1 .rp2 { animation-delay: -1.45s; } .s1 .rp3 { animation-delay: -2.9s; }
+@keyframes s1-rp {
+  0%   { r: 124px; opacity: .18; stroke-dasharray: 40 .8; }
+  35%  { r: 164px; opacity: .085; stroke-dasharray: 14 2.8; }
+  70%  { r: 204px; opacity: .03; stroke-dasharray: 4 5.2; }
+  100% { r: 238px; opacity: 0;   stroke-dasharray: 2 7; }
+}
+.s1 .orb {
+  position: absolute; left: 50%; top: 50%; width: 88px; height: 88px; margin: -44px 0 0 -44px; border-radius: 50%;
+  background: radial-gradient(118% 118% at 32% 24%, var(--sh-orb1) 0%, var(--sh-orb2) 48%, var(--sh-orb3) 100%);
+  box-shadow: 0 6px 16px rgba(var(--sh-sh), .055), 0 1px 3px rgba(var(--sh-sh), .04), inset 0 1px 0 var(--sh-rim);
+  display: flex; align-items: center; justify-content: center; animation: s1-orb 18s ease-in-out infinite;
+}
+.s1 .orb .face { width: 38px; height: 38px; font-size: 18px; box-shadow: 0 3px 8px rgba(var(--sh-sh), .055), 0 1px 1px rgba(var(--sh-sh), .035); }
+/* 进来的人：只有距离没有方向 → 放正上方（《只有距离》定稿），半径 = 正常对话距离那一档（112 × .525） */
+.s1 .arc { position: absolute; left: 50%; top: 50%; width: 130px; height: 130px; margin: -65px 0 0 -65px; overflow: visible; filter: blur(.45px); animation: s1-arc 18s linear infinite; }
+.s1 .arc path { fill: none; stroke-width: 1.6; stroke-linecap: butt; }
+.s1 .peer {
+  position: absolute; left: 50%; top: 50%; width: 70px; margin: -76px 0 0 -35px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  transform-origin: 35px 17px; animation: s1-peer 18s ease-out infinite;
+}
+.s1 .peer .fw { position: relative; width: 34px; height: 34px; }
+.s1 .peer .face { width: 34px; height: 34px; font-size: 16px; box-shadow: 0 4px 11px rgba(var(--sh-sh), .09), 0 1px 1px rgba(var(--sh-sh), .05); }
+.s1 .peer .halo { position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(var(--sh-i), .22); opacity: 0; animation: s1-halo 18s ease-out infinite; }
+.s1 .peer b { font-size: 9.5px; font-weight: 400; color: var(--sh-ink); white-space: nowrap; }
+.s1 .peer .dust { position: absolute; left: 17px; top: 17px; width: 2px; height: 2px; border-radius: 50%; background: var(--sh-ink); opacity: 0; animation: s1-dust 18s ease-out infinite; }
+.s1 .status { flex: none; margin-top: 10px; padding: 0 14px; text-align: center; font-size: 11px; font-weight: 500; color: var(--sh-ink); line-height: 1.35; }
+.s1 .status .a { opacity: 0; animation: s1-a 18s linear infinite; }
+.s1 .status .b { opacity: 1; animation: s1-b 18s linear infinite; }
+.s1 .last { flex: none; padding: 0 13px; display: flex; flex-direction: column; gap: 6px; }
+.s1 .lh { display: flex; align-items: baseline; justify-content: space-between; font-size: 10px; }
+.s1 .lh b { font-weight: 500; color: var(--sh-t2); }
+.s1 .lh .see { display: flex; align-items: center; gap: 3px; color: var(--sh-t3); }
+.s1 .card {
+  display: flex; align-items: center; gap: 7px; height: 44px; padding: 0 9px; border-radius: 12px;
+  background: var(--sh-card); box-shadow: 0 1px 2px rgba(var(--sh-sh), .035), 0 4px 10px rgba(var(--sh-sh), .035);
+}
+.s1 .card .face { width: 24px; height: 24px; font-size: 13px; background: var(--sh-chip); }
+.s1 .card .txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.s1 .card .txt b { font-size: 11.5px; font-weight: 600; color: var(--sh-ink); }
+.s1 .card .sub { font-size: 9.5px; color: var(--sh-t3); white-space: nowrap; }
+.s1 .card .sub em, .s1 .status span { font-style: normal; }
+.s1 .card .sub .a { opacity: 0; animation: s1-a 18s linear infinite -17.6s; }
+.s1 .card .sub .b { color: var(--sh-t2); opacity: 1; animation: s1-b 18s linear infinite -17.6s; }
+.s1 .card .btn { flex: none; font-size: 10px; }
+.s1 .card .btn > span { display: flex; align-items: center; justify-content: center; height: 22px; padding: 0 11px; border-radius: 11px; white-space: nowrap; }
+.s1 .card .btn .a { background: var(--sh-chip); color: var(--sh-t2); opacity: 0; animation: s1-a 18s linear infinite -17.6s; }
+.s1 .card .btn .b { background: var(--sh-ink); color: var(--sh-inv); font-weight: 500; opacity: 1; animation: s1-b 18s linear infinite -17.6s; }
+.s1 .how { flex: none; margin-top: 10px; padding: 0 13px; height: 24px; display: flex; align-items: center; gap: 5px; font-size: 9.5px; color: var(--sh-t3); }
+.s1 .bot { height: 14px; flex: none; }
+/* 18 秒的主时间线：0–5 s 搜索 · 5 s 进入 · 5–14.5 s 在场 · 14.5–15.5 s 化尘离开 · 回到搜索 */
+@keyframes s1-ripples { 0%, 27.5% { opacity: 1; } 29%, 86% { opacity: 0; } 89%, 100% { opacity: 1; } }
+@keyframes s1-orb {
+  0% { transform: scale(1); } 12.2% { transform: scale(1.022); } 24.4% { transform: scale(1); }
+  40% { transform: scale(1.006); } 55% { transform: scale(1); } 71% { transform: scale(1.006); } 86% { transform: scale(1); }
+  93% { transform: scale(1.02); } 100% { transform: scale(1); }
+}
+@keyframes s1-peer {
+  0%, 27.8% { opacity: 0; transform: scale(.78); }
+  29.6% { opacity: 1; transform: scale(1.05); }
+  31%, 80.5% { opacity: 1; transform: scale(1); }
+  83.5%, 100% { opacity: 0; transform: scale(.94) translateX(3px); }
+}
+@keyframes s1-halo {
+  0%, 29.8% { opacity: 0; transform: scale(1); } 29.9% { opacity: .4; } 38% { opacity: 0; transform: scale(1.9); }
+  47.9% { opacity: 0; transform: scale(1); } 48% { opacity: .32; } 56.5% { opacity: 0; transform: scale(1.9); }
+  66.2% { opacity: 0; transform: scale(1); } 66.3% { opacity: .32; } 75%, 100% { opacity: 0; transform: scale(1.9); }
+}
+@keyframes s1-arc { 0%, 28.8% { opacity: 0; } 31%, 81% { opacity: 1; } 84%, 100% { opacity: 0; } }
+@keyframes s1-a { 0%, 28% { opacity: 1; } 29.2%, 84.4% { opacity: 0; } 86%, 100% { opacity: 1; } }
+@keyframes s1-b { 0%, 29.4% { opacity: 0; } 30.6%, 83% { opacity: 1; } 84.4%, 100% { opacity: 0; } }
+@keyframes s1-dust {
+  0%, 80.6% { opacity: 0; transform: translate(0, 0); } 81.4% { opacity: .55; }
+  84.6%, 100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+}
+
+/* ── 02 第一次见面 · TA 那一侧：ConfirmFriendScreen.joinFrame（幕布 97% 之上、居中、无字标） ── */
+.s2 .c2 { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); padding: 0 17px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.s2 .duo { position: relative; display: flex; align-items: center; height: 100px; }
+.s2 .duo .glow { position: absolute; left: 50%; top: 50%; width: 173px; height: 100px; margin: -50px 0 0 -86px; border-radius: 50%; background: radial-gradient(60% 60% at 50% 50%, rgba(var(--sh-glow), .9) 0%, rgba(var(--sh-glow), .4) 55%, rgba(var(--sh-glow), 0) 100%); }
+.s2 .duo .face { position: relative; width: 44px; height: 44px; font-size: 21px; box-shadow: 0 6px 16px rgba(var(--sh-sh), .07), 0 1px 1px rgba(var(--sh-sh), .04); }
+.s2 .link { position: relative; width: 58px; height: 44px; }
+.s2 .link i { position: absolute; top: 21px; width: 1.6px; height: 1.6px; border-radius: 50%; background: var(--sh-ink); opacity: .34; }
+.s2 .nm { margin-top: 12px; font-size: 11.5px; font-weight: 600; color: var(--sh-ink); }
+.s2 .ask { margin-top: 5px; font-size: 12.5px; font-weight: 500; color: var(--sh-ink); }
+.s2 .once { margin-top: 5px; font-size: 10px; line-height: 1.5; color: var(--sh-t2); }
+.s2 .fill { margin-top: 16px; width: 100%; height: 28px; border-radius: 14px; background: var(--sh-ink); color: var(--sh-inv); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+.s2 .pill { margin-top: 7px; height: 25px; padding: 0 23px; border-radius: 13px; background: var(--sh-chip); color: var(--sh-t2); font-size: 10.5px; display: flex; align-items: center; }
+.s2 .fn { margin-top: 4px; font-size: 9px; color: var(--sh-t3); }
+
+/* ── 03 对话中 · 说话中：InCallSpeaking（顶部三点是静息态：网络好就该看不见） ── */
+.s3 .top { height: 37px; flex: none; }
+.s3 .q { height: 17px; flex: none; display: flex; align-items: center; gap: 2px; padding: 0 9px; }
+.s3 .q i { display: block; width: 3px; height: 3px; border-radius: 50%; background: var(--sh-ink); opacity: .2; }
+.s3 .pf { position: relative; flex: none; width: 186px; height: 174px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.s3 .mist { position: absolute; left: 0; top: 8px; width: 186px; height: 158px; border-radius: 50%; background: radial-gradient(58% 58% at 50% 50%, rgba(var(--sh-glow), .9) 0%, rgba(var(--sh-glow), .45) 56%, rgba(var(--sh-glow), 0) 100%); }
+.s3 .fd { position: relative; }
+.s3 .pair { position: relative; display: flex; align-items: flex-start; gap: 24px; }
+.s3 .me { display: flex; flex-direction: column; align-items: center; gap: 6px; transform: translateY(5px); }
+.s3 .me .face { width: 44px; height: 44px; font-size: 21px; box-shadow: 0 3px 8px rgba(var(--sh-sh), .04); opacity: .82; }
+.s3 .me span { font-size: 9.5px; color: var(--sh-t3); }
+.s3 .sp { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.s3 .sp .glow { position: absolute; left: -17px; top: -17px; width: 84px; height: 84px; border-radius: 50%; background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 254, 1) 0%, rgba(var(--sh-glow), .6) 58%, rgba(var(--sh-glow), 0) 100%); opacity: .85; transform: scale(1.03); animation: s3-glow 1.7s ease-in-out infinite; }
+.s3 .sp .df { position: absolute; left: 25px; top: 25px; width: 80px; height: 80px; margin: -40px 0 0 -40px; border-radius: 50%; border: 1.5px dotted rgba(var(--sh-i), .26); opacity: .2; animation: s3-df 3.2s ease-out infinite; }
+.s3 .sp .d2 { animation-delay: -1.06s; } .s3 .sp .d3 { animation-delay: -2.12s; }
+.s3 .sp .face { position: relative; width: 49px; height: 49px; font-size: 24px; box-shadow: 0 7px 18px rgba(var(--sh-sh), .09), 0 1px 1px rgba(var(--sh-sh), .04); animation: s3-voice 1.7s ease-in-out infinite; }
+.s3 .sp b { position: relative; font-size: 11.5px; font-weight: 600; color: var(--sh-ink); }
+.s3 .timer { flex: none; margin-top: 5px; text-align: center; font-size: 9.5px; letter-spacing: .3px; color: var(--sh-t3); }
+.s3 .vol { flex: none; width: 186px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
+.s3 .vol span { font-size: 10px; color: var(--sh-t2); }
+.s3 .track { position: relative; height: 11px; }
+.s3 .track i { position: absolute; top: 4.5px; left: 0; right: 0; height: 2px; border-radius: 1px; background: var(--sh-track); }
+.s3 .track i.on { right: auto; width: 61.6%; background: var(--sh-ink); }
+.s3 .track i.th { top: 0; left: calc(61.6% - 5.5px); right: auto; width: 11px; height: 11px; border-radius: 50%; background: var(--sh-thumb); box-shadow: 0 1px 2px rgba(var(--sh-sh), .22), 0 2px 5px rgba(var(--sh-sh), .10); }
+.s3 .mic { flex: none; width: 186px; margin: 12px auto 0; height: 20px; display: flex; align-items: center; font-size: 10px; }
+.s3 .mic span { flex: 1 1 auto; color: var(--sh-t2); }
+.s3 .mic em { font-style: normal; color: var(--sh-t3); }
+.s3 .dock {
+  flex: none; width: 186px; height: 61px; margin: 10px auto 0; padding: 0 14px; border-radius: 15px;
+  background: var(--sh-card); box-shadow: 0 1px 2px rgba(var(--sh-sh), .035), 0 5px 14px rgba(var(--sh-sh), .045);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.s3 .dock .g { display: flex; gap: 14px; }
+.s3 .k { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 9px; color: var(--sh-t2); }
+.s3 .ctl { width: 32px; height: 32px; border-radius: 50%; background: var(--sh-chip); display: flex; align-items: center; justify-content: center; }
+.s3 .ctl svg { stroke: var(--sh-ink); }
+.s3 .end .ctl { width: 29px; height: 29px; background: var(--sh-ink); box-shadow: 0 2px 5px rgba(var(--sh-i), .13); }
+.s3 .end .ctl svg { fill: var(--sh-inv); stroke: none; }
+.s3 .bot { height: 18px; flex: none; }
+@keyframes s3-voice { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.052); } }
+@keyframes s3-glow { 0%, 100% { opacity: .70; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.10); } }
+@keyframes s3-df { 0% { width: 50px; height: 50px; margin: -25px 0 0 -25px; opacity: .55; } 100% { width: 110px; height: 110px; margin: -55px 0 0 -55px; opacity: 0; } }
 
 /* 加密那一段：两条并排，形状本身就在说「这是两件事」 */
 .split { display: grid; gap: 1.25rem; }
