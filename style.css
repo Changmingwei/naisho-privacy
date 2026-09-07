@@ -63,10 +63,9 @@ body {
 @media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
 
 /* 语言：一个纯 CSS 的下拉（<details>，没有脚本）。 */
-.lang { position: relative; display: inline-block; }
+.lang { position: relative; }
 .lang > summary {
   list-style: none; cursor: pointer; color: var(--muted);
-  border-bottom: 1px solid var(--rule); padding-bottom: 1px;
 }
 .lang > summary::-webkit-details-marker { display: none; }
 .lang > summary::after { content: " ⌄"; letter-spacing: 0; }
@@ -84,10 +83,28 @@ body {
 }
 .lang li b { color: var(--text); }
 .lang li a:hover { color: var(--text); background: var(--bg); }
-.masthead nav { margin-left: auto; font-size: .9rem; color: var(--muted); }
-.masthead nav a { color: inherit; }
+/* 页眉那一行三样东西（隐私 · 支持 · 语言）。**这里是 flex，不是一串 inline**
+   ——Changming 09-07：「字号、间距、高度都统一吗？」不统一，三处：
+
+   ① 下划线。全站那条 `a { border-bottom }` 在**正文**里是对的（正文中的链接不能只靠颜色
+      认出来），可页眉里只有三样东西、位置本身就说明了它们是导航；三道下划线再加页眉自己
+      那道分隔线，一条窄带里横着四条平行线。页眉这一处撤掉，正文那条一个字不动。
+   ② 语言那一颗的线比另外两颗**低 1px、长一截**：它有自己的 `border-bottom` 外加
+      `padding-bottom: 1px`，而且那道线连 `⌄` 和它前面那个空格一起划了进去。
+   ③ 语言前面那道缝比「隐私 · 支持」之间的宽：`.sep` 两边各 .5rem 是一样的，
+      但 HTML 里 `</span>` 和 `<details>` 之间有个换行，浏览器把它当成一个空格
+      ——于是那一处多出小半个字。**改成 flex + gap，空白符从此不参与排版**，
+      这类缝再也不会因为谁换了行就变宽。
+
+   字号本来就是统一的（.9rem，下拉里的条目也是），高度现在靠 `align-items: baseline`
+   对齐基线——三样东西坐在同一条基线上，而不是各自的盒底。 */
+.masthead nav {
+  margin-left: auto; font-size: .9rem; color: var(--muted);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem;
+}
+.masthead nav a { color: inherit; border-bottom: none; }
 .masthead nav a:hover { color: var(--text); }
-.masthead nav .sep { opacity: .45; margin: 0 .5rem; }
+.masthead nav .sep { opacity: .45; margin: 0; }
 
 a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
 a:hover { border-color: var(--muted); }
@@ -116,6 +133,143 @@ a:focus-visible { outline: 2px solid var(--muted); outline-offset: 3px; border-r
 .btn.primary:hover { opacity: .88; }
 .btn.ghost { border-color: transparent; background: transparent; color: var(--muted); padding-left: .35rem; }
 .btn.ghost:hover { color: var(--text); }
+
+/* ── 开场右边：那块场 ──────────────────────────────────────────────
+   Changming 09-07：「感觉官网第一部分的右侧有点空」。那块空不拿图形填——
+   站进去的是这个产品唯一的画面：**两个人、之间那段距离、场在呼吸**。
+
+   和下面《怎么用》那三块屏刻意不是同一句话：那三块讲「app 长什么样」（有手机、有
+   状态栏、有按钮、有计时器），这一块讲「那件事本身长什么样」——没有手机、没有连线、
+   没有边界圈，直接躺在站点自己的纸上（#F7F6F2 / #0D0D0B 本来就是 app 那张纸）。
+   材料是同一批数，所以两处摆在同一页上认得出是同一只手。
+
+   为什么另起一份 --fld-*，不复用 .shot 那套 --sh-*：那一套是「屏里」的一套，挂在 .shot 上、
+   跟着那三块屏走；这块场不在屏里。这里的分工是**材料照 app，字照站点**——头像那张纸、
+   光晕、投影用 app 的值，名字用 --muted，因为名字是页面上的字，不是屏里的字。 */
+.hero .fld {
+  /* 浅色三个值就是 app 里那三个（Theme.avatar / 声场核那团光 / 投影的黑）。
+     深色的头像纸 #35312A 必须比页面 #0D0D0B 亮一档，不然 emoji 是浮在虚空里的；
+     投影在深色里归零，和 .shot 一样——那边靠纸本身分层，不靠影子。 */
+  --fld-face: #FEFDFB;
+  --fld-glow: 254, 253, 251;
+  --fld-sh: 27, 26, 24;
+  --fld-ink: 26, 25, 23;
+  /* 一个尺寸源：整块场的宽。头像、光晕、位置全从它算，换一档只改这一行。
+     62vw 是保险丝——系统字号调大时 rem 会跟着涨，那时按视口收，别顶出纸边。 */
+  --u: min(13.5rem, 62vw);
+  /* 头像 64：场上只有两个人时 app 给的就是 64（FieldPlacement.avatarDiameter，≥5 人才收到 56）。
+     这块场不在屏里，不用按 .shot 那个 0.525 缩——它和真机上一样大。 */
+  --d: calc(var(--u) * .32);
+  position: relative;
+  width: var(--u);
+  height: calc(var(--u) * .98);
+  margin: 2.75rem auto 0;
+  user-select: none; -webkit-user-select: none;
+  /* 有人在场那一档呼吸：5.6 s、1 → 1.006（Tunables.fieldSettlePeriod / fieldSettleScale）。
+     1.006 在 200 px 上是 1.2 px——它本来就不该被看见，只该被觉得。
+     搜索那一档（4.4 s / 1.022）是「一个人在找人」，这块场里有两个人，用不上。
+     呼吸挂在整块上而不是各自头像上：胀缩的是**他们之间那段距离**。 */
+  animation: fld-breathe 5.6s ease-in-out infinite;
+}
+@media (prefers-color-scheme: dark) {
+  .hero .fld {
+    --fld-face: #35312A; --fld-glow: 46, 42, 34; --fld-sh: 0, 0, 0; --fld-ink: 243, 240, 234;
+  }
+}
+
+/* 那一小块光：场的全部范围就是它，**不画边界圈**。
+   app 0.6.6 把 ⌀216 那条外环整条退役了，理由是「闭合、均匀、静止的圆线只有一种读法：
+   到此为止」。这块场要说的恰好反过来：亮到这儿为止、再往外什么都没有，可它自己没有围墙。
+   116% / 126% 是让它溢出盒子——溢出的那一圈已经淡到接近 0，只为了让这个物体在
+   右栏里显得比 200 px 大一圈，而不占版面。 */
+.hero .fld .pool {
+  position: absolute; left: 51%; top: 47.5%;
+  width: 116%; height: 126%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(var(--fld-glow), .9) 0%, rgba(var(--fld-glow), .42) 56%, rgba(var(--fld-glow), 0) 100%);
+}
+
+/* 品牌那三点。点是「存在 / 声音 / 声场」，永远不是网络拓扑（ProximityField 开头那段）。
+   它们散在光的边上、越外越淡——作用是让这块光**有一个看得出来的边，而不是画一条边**。
+   落在 .pool 前面是照 app 的图层序：里圈的被光洗掉，只剩外圈的还站着。 */
+.hero .fld .dot {
+  position: absolute; width: 3px; height: 3px; border-radius: 50%;
+  background: rgb(var(--fld-ink));
+}
+
+/* 两个人：**一样大、不一样高**。
+   一样大是因为对这一页的访客来说他们是对等的两个人（场心那颗「我」不在这儿，
+   所以这块场没有 orb，也就不会和第一块屏撞脸）。
+   不一样高是因为对称本身就是「这是摆出来的」这个信号（FieldPlacement 那一条）——
+   差那一档高度，一对图标才变回两个站着的人。
+   中心距 101 px，两张纸之间还剩 37 px 空白：圆可以相切、绝不相交（0.6.6 的不变量）。
+   **那段空白就是这一整块的主语**，所以中间什么都不画——一条连线会把「一段距离」
+   变成「一条链路」，而链路是拓扑。
+   格子只有头像那么大、名字挂在版面外：和 app 里一样（FieldAvatar「圆心就是落位点」）。 */
+.hero .fld .who { position: absolute; width: var(--d); height: var(--d); }
+.hero .fld .one { left: 13%; top: 18.4%; }
+.hero .fld .two { left: 57%; top: 43.9%; }
+
+.hero .fld .face {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  width: var(--d); height: var(--d); border-radius: 50%;
+  background: var(--fld-face);
+  font-size: calc(var(--d) * .48); line-height: 1;
+  /* FieldAvatar 那两层，一点没缩：.09 / 11 / y8 把这张纸托起来，
+     .05 / 1 / y1 再把它压回纸面——少任何一层它都会飘。 */
+  box-shadow: 0 8px 11px rgba(var(--fld-sh), .09), 0 1px 1px rgba(var(--fld-sh), .05);
+  transform: scale(1.028);
+  animation: fld-say 9.6s ease-in-out infinite;
+}
+
+/* 名字：这是页面上的字，不是屏里的字，所以走站点的 --muted。
+   绝对定位挂在头像下面，名字再长也推不动头像（app 那条「名字不进版面」）。 */
+.hero .fld b {
+  position: absolute; left: 50%; top: calc(100% + .55rem);
+  transform: translateX(-50%);
+  font-size: .8rem; font-weight: 400; line-height: 1;
+  color: var(--muted); white-space: nowrap;
+}
+
+/* 说话的那一个脚下那团光（app InCall 里 .sp .glow 那一层）。
+   **只加不减**：说话的人被托起来，听的那个一点不暗——ProximityField 里那条硬规矩，
+   亮度一开口就会被读成「信号弱 / 离得远」，用一个轴说另一个轴的事正是那次事故本身。 */
+.hero .fld .lift {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(var(--d) * 1.85); height: calc(var(--d) * 1.85);
+  margin: calc(var(--d) * -.925) 0 0 calc(var(--d) * -.925);
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(var(--fld-glow), 1) 0%, rgba(var(--fld-glow), .55) 56%, rgba(var(--fld-glow), 0) 100%);
+  opacity: .92;
+  animation: fld-lift 9.6s ease-in-out infinite;
+}
+/* 静止那一帧——也就是减弱动态之后剩下的那一帧、和页面加载的第一帧：
+   一个人正说着，另一个听着。两个人的基础样式就是那一帧的两半，
+   动画只是把这两半来回换（-4.8s 是把 .two 拨到半圈之后），不另写一条静止规则。 */
+.hero .fld .two .lift { opacity: 0; }
+.hero .fld .two .face { transform: scale(1); }
+.hero .fld .two .lift, .hero .fld .two .face { animation-delay: -4.8s; }
+
+/* 9.6 s 一轮：一个人说 4 s，交接 0.8 s，换另一个。
+   **这一句只有这块场说得出来**：没有「按住说话」这回事，两个人都能说（六件事 03），
+   而下面三块屏里没有一块讲得了「轮到谁」。
+   交接慢到 0.8 s 是故意的：快了是切换，慢了才是接话。 */
+@keyframes fld-lift { 0%, 41.6% { opacity: .92; } 50%, 91.6% { opacity: 0; } 100% { opacity: .92; } }
+@keyframes fld-say  { 0%, 41.6% { transform: scale(1.028); } 50%, 91.6% { transform: scale(1); } 100% { transform: scale(1.028); } }
+@keyframes fld-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.006); } }
+
+/* 48rem = 768：正是 .wrap（46rem）连自己的内边距一起吃满的那一刻——从这里起正文列
+   永远是 688 px，再宽也不变。所以分栏只存在于这一侧，中间**没有一段「越来越挤」的宽度带**：
+   要么两列，要么叠下去。
+   688 − 200 − 32 = 456 给字：够 h1 的 20ch、够 .sub 的 40ch，也够那两颗按钮并排一行。 */
+@media (min-width: 48rem) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 12.5rem; column-gap: 2rem; align-items: center; }
+  .hero .copy { min-width: 0; }
+  /* 竖着居中，于是它落在 .sub 那几行旁边、而不是和 h1 抢：一屏上只让一件事最响。 */
+  .hero .fld { --u: 12.5rem; margin: 0; }
+}
 
 /* ── 分节 ─────────────────────────────────────────── */
 section { padding: 3.25rem 0; border-top: 1px solid var(--rule); }
