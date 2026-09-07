@@ -121,6 +121,17 @@ p:last-child { margin-bottom: 0; }
 }
 .fact p { margin-bottom: .5rem; }
 
+/* 怎么用：三步一张图。三张是一个序列，所以编号在这里是信息，不是装饰 */
+.howto { display: grid; gap: 2.1rem; }
+@media (min-width: 40rem) { .howto { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.75rem; } }
+.step .n {
+  display: block; font-size: .72rem; color: var(--faint);
+  font-variant-numeric: tabular-nums; margin-bottom: .6rem;
+}
+/* 图跟着正文的墨走：SVG 里只有 currentColor 一个颜色来源，深浅两套自动对调 */
+.step svg { display: block; width: 100%; height: auto; color: var(--text); }
+.step p { font-size: .9rem; line-height: 1.7; color: var(--prose); margin: .75rem 0 0; }
+
 /* 加密那一段：两条并排，形状本身就在说「这是两件事」 */
 .split { display: grid; gap: 1.25rem; }
 @media (min-width: 40rem) { .split { grid-template-columns: 1fr 1fr; gap: 2rem; } }
