@@ -56,7 +56,34 @@ body {
   font: 700 1.35rem/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -0.015em; margin: 0;
 }
-.wordmark .cn { font-weight: 400; color: var(--muted); margin-left: .5rem; font-size: .95rem; letter-spacing: 0; }
+.wordmark a { color: inherit; border: none; display: inline-flex; align-items: center; gap: .5rem; }
+/* 名字在五种语言里都只有一个：Naisho。字标里不挂译名。 */
+.logo { display: block; width: 28px; height: 28px; border-radius: 6px; }
+/* 深色下这张线稿是黑的，会糊在深色纸上——反相一下比另存一张更省，形状一模一样。 */
+@media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
+
+/* 语言：一个纯 CSS 的下拉（<details>，没有脚本）。 */
+.lang { position: relative; display: inline-block; }
+.lang > summary {
+  list-style: none; cursor: pointer; color: var(--muted);
+  border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+}
+.lang > summary::-webkit-details-marker { display: none; }
+.lang > summary::after { content: " ⌄"; letter-spacing: 0; }
+.lang[open] > summary { color: var(--text); }
+.lang > ul {
+  position: absolute; right: 0; top: calc(100% + .5rem); z-index: 5;
+  margin: 0; padding: .35rem 0; list-style: none; min-width: 7.5rem;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .07);
+}
+.lang li { padding: 0; }
+.lang li a, .lang li b {
+  display: block; padding: .35rem .85rem; font-size: .9rem; font-weight: 400;
+  color: var(--muted); border: none; white-space: nowrap;
+}
+.lang li b { color: var(--text); }
+.lang li a:hover { color: var(--text); background: var(--bg); }
 .masthead nav { margin-left: auto; font-size: .9rem; color: var(--muted); }
 .masthead nav a { color: inherit; }
 .masthead nav a:hover { color: var(--text); }
