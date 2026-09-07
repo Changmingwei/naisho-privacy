@@ -1,0 +1,177 @@
+/* naisho.space —— 全站唯一一份样式。没有脚本，没有第三方资源，没有网络字体。
+   为什么不引网络字体（画布《官网规格》）：能用这个产品的人全在 Apple 设备上，
+   那里的系统字栈就是 SF Pro ＋ 苹方 / ヒラギノ，和 app 里一模一样；
+   中文没有能引的那一款（一两 MB，子集化也拖首屏），而只引拉丁正好制造
+   「一句中英混排的话当场看出两副字」——app 那条规矩要避开的正是这个。 */
+
+:root {
+  color-scheme: light dark;
+  --bg: #F7F6F2;
+  --surface: #FEFDFB;
+  --text: #1B1A18;
+  --prose: #35322D;
+  --muted: #77736C;
+  --faint: #ABA69D;
+  --rule: #DDDAD4;
+  --accent: #1A1917;
+  --ink-invert: #F7F6F2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0D0D0B;
+    --surface: #1C1A16;
+    --text: #F3F0EA;
+    --prose: #DCD8D0;
+    --muted: #A8A49B;
+    --faint: #7A756C;
+    --rule: rgba(255, 255, 255, 0.10);
+    --accent: #F3F0EA;
+    --ink-invert: #0D0D0B;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  /* 中日文那几款必须显式列出：网页上没有 iOS 那条「系统自己的回落链是对的」的保证，
+     -apple-system 在 Windows / Android 会落到 Segoe UI / Roboto，两副都没有汉字。 */
+  font: 17px/1.72 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+        "PingFang SC", "PingFang TC", "Hiragino Sans", "Microsoft YaHei",
+        "Noto Sans SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── 页眉 ─────────────────────────────────────────── */
+.masthead {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 1.25rem;
+  padding: 1.75rem 0 1.5rem; border-bottom: 1px solid var(--rule);
+}
+.wordmark {
+  font: 700 1.35rem/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.015em; margin: 0;
+}
+.wordmark .cn { font-weight: 400; color: var(--muted); margin-left: .5rem; font-size: .95rem; letter-spacing: 0; }
+.masthead nav { margin-left: auto; font-size: .9rem; color: var(--muted); }
+.masthead nav a { color: inherit; }
+.masthead nav a:hover { color: var(--text); }
+.masthead nav .sep { opacity: .45; margin: 0 .5rem; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-color: var(--muted); }
+a:focus-visible { outline: 2px solid var(--muted); outline-offset: 3px; border-radius: 2px; }
+
+/* ── 开场 ─────────────────────────────────────────── */
+.hero { padding: 3.5rem 0 3rem; }
+.hero h1 {
+  font-size: clamp(1.85rem, 5.2vw, 2.6rem); line-height: 1.28; font-weight: 600;
+  letter-spacing: -0.02em; margin: 0 0 1.25rem; text-wrap: balance; max-width: 20ch;
+}
+.hero .sub { font-size: 1.075rem; color: var(--prose); margin: 0 0 1rem; max-width: 40ch; }
+.hero .fine { font-size: .925rem; color: var(--muted); margin: 0; max-width: 42ch; }
+
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.btn {
+  display: inline-block; padding: .7rem 1.35rem; border-radius: 999px;
+  font-size: .95rem; border: 1px solid var(--rule); background: var(--surface);
+  color: var(--text);
+}
+.btn.soon { color: var(--faint); cursor: default; background: transparent; }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--muted); padding-left: .35rem; }
+.btn.ghost:hover { color: var(--text); }
+
+/* ── 分节 ─────────────────────────────────────────── */
+section { padding: 3.25rem 0; border-top: 1px solid var(--rule); }
+.eyebrow {
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--faint); margin: 0 0 .75rem;
+}
+h2 {
+  font-size: clamp(1.3rem, 3.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.015em;
+  margin: 0 0 1.75rem; text-wrap: balance;
+}
+h3 { font-size: 1.0rem; font-weight: 600; margin: 0 0 .4rem; }
+p { margin: 0 0 1rem; color: var(--prose); }
+p:last-child { margin-bottom: 0; }
+.fine { font-size: .9rem; color: var(--muted); }
+
+/* 场景：一条一条，不是卡片墙——它们是同一件事的四个样子 */
+.scenes { list-style: none; margin: 0 0 1.75rem; padding: 0; }
+.scenes li { padding: .9rem 0; border-top: 1px solid var(--rule); color: var(--prose); }
+.scenes li:first-child { border-top: none; padding-top: 0; }
+.scenes b { color: var(--text); font-weight: 600; }
+.closing { font-size: 1.02rem; color: var(--text); }
+
+/* 六件事 */
+.facts { display: grid; gap: 1.75rem; }
+@media (min-width: 40rem) { .facts { grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; } }
+.fact .n {
+  display: inline-block; font-size: .72rem; color: var(--faint);
+  font-variant-numeric: tabular-nums; margin-bottom: .35rem;
+}
+.fact p { margin-bottom: .5rem; }
+
+/* 加密那一段：两条并排，形状本身就在说「这是两件事」 */
+.split { display: grid; gap: 1.25rem; }
+@media (min-width: 40rem) { .split { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+.split .col {
+  background: var(--surface); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 1.25rem 1.35rem;
+}
+.split .label {
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--faint); margin: 0 0 .5rem;
+}
+
+/* 诚实那一段 */
+.honest { padding: 3.5rem 0; }
+.honest .big {
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem); font-weight: 600; line-height: 1.45;
+  letter-spacing: -0.01em; margin: 0 0 1rem; text-wrap: balance;
+}
+
+/* 联系 */
+.mail {
+  display: inline-block; margin-top: .35rem; font-size: 1.1rem;
+  border-bottom: 1px solid var(--muted); padding-bottom: 1px;
+}
+
+/* 规格条 */
+.spec {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.25rem;
+  font-size: .875rem; color: var(--muted);
+  padding: 1.5rem 0; border-top: 1px solid var(--rule);
+}
+.spec span { white-space: nowrap; }
+
+footer {
+  padding: 1.5rem 0 4rem; font-size: .875rem; color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: baseline;
+}
+footer a { color: inherit; border-bottom-color: transparent; }
+footer a:hover { color: var(--text); border-bottom-color: var(--rule); }
+footer .copy { margin-left: auto; color: var(--faint); }
+
+/* 长文（隐私政策、支持页） */
+.doc h2 {
+  font-size: 1.22rem; margin: 3rem 0 1.1rem;
+  padding-top: 1.85rem; border-top: 1px solid var(--rule);
+}
+.doc h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.doc h3 { margin: 2rem 0 .5rem; }
+.doc ul, .doc ol { margin: 0 0 1rem; padding-left: 1.35rem; color: var(--prose); }
+.doc li { margin-bottom: .4rem; }
+.lede {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 1.125rem 1.25rem; margin: 0 0 1.75rem;
+}
+.updated { color: var(--faint); font-size: .875rem; margin: .35rem 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
