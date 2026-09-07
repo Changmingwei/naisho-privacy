@@ -1,0 +1,7 @@
+# Cloudflare Pages 的跳转表。左边是老地址，右边是新家，最后是状态码。
+#
+# 隐私政策原来在站点根上（GitHub Pages 那一版就是这么发的），已经填进 App Store Connect 两处。
+# 站点改版之后根上是介绍页，所以这几条老写法一律领去 /privacy/，**不许出现 404**。
+/privacy.html   /privacy/   301
+/privacy-policy /privacy/   301
+/support.html   /support/   301

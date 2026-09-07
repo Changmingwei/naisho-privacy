@@ -1,0 +1,10 @@
+# Cloudflare Pages 的响应头（这个文件本身不会被发布出去）。
+# 这个站会被印在 App Store 的商品页上，链接点进来的人不该被任何第三方脚本跟踪——
+# 站里本来就一行第三方代码都没有，下面这几条是把它钉死。
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
