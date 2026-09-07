@@ -59,8 +59,16 @@ body {
 .wordmark a { color: inherit; border: none; display: inline-flex; align-items: center; gap: .5rem; }
 /* 名字在五种语言里都只有一个：Naisho。字标里不挂译名。 */
 .logo { display: block; width: 28px; height: 28px; border-radius: 6px; }
-/* 深色下这张线稿是黑的，会糊在深色纸上——反相一下比另存一张更省，形状一模一样。 */
-@media (prefers-color-scheme: dark) { .logo { filter: invert(1); } }
+/* 深色版是**另一张图**，不是把亮色那张反相（`<picture>` + `prefers-color-scheme` 换源，零脚本）。
+   09-07 一度用的是 `filter: invert(1)`，当时的理由写着「墨 + 透明，反相只把墨翻成浅色，
+   形状一模一样」——**那句话是错的，而且我验的是 alpha 通道，不是它长什么样**。
+   这张线稿不是纯墨稿：头发是一大片深色、脸是一大片浅色，反相把人翻成了照片负片
+   （白头发、黑脸），看着像换了个人。Changming 一眼看出来了。
+   现在用的就是 app 自己那张 `AppIcon-Dark.png`——头发照旧深、脸照旧浅，只有底翻黑。
+
+   **它是不透明的，这是有意的**：那张图的底色正是 #0D0D0B，和深色下的 `--bg` 一模一样
+   （图标本来就是照同一个令牌画的），贴上去看不出边。抠成透明反而会在头发边缘留一圈锯齿。
+   代价是这两个值绑在了一起：`--bg` 哪天改了，这张图要跟着重出。 */
 
 /* 语言：一个纯 CSS 的下拉（<details>，没有脚本）。 */
 .lang { position: relative; }
