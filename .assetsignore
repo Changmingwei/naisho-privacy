@@ -3,3 +3,6 @@
 .git
 .assetsignore
 node_modules
+README.md
+# Cloudflare 构建时自动生成的那份配置，也不是网页（Changming 10-14「都排出吧」）
+wrangler.jsonc
