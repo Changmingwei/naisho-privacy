@@ -1,0 +1,5 @@
+# 不是网站的一部分，不许当静态资源发出去（Changming 10-14）
+# _headers / _redirects 不许写进来：CSP、HSTS 和老地址的 301 都靠它们。
+.git
+.assetsignore
+node_modules

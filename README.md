@@ -1,7 +1,8 @@
 # naisho-privacy → naisho.space 的站点
 
 这个仓库原来只放隐私政策一页，2026-09-07 起变成 **naisho.space 整个站点**的源码。
-托管走 **Cloudflare Pages**（连的就是这个仓库，`main` 分支，构建输出目录 `/`），
+托管走 **Cloudflare Worker 的静态资源**（连的就是这个仓库，`main` 分支；仓库里没有 `wrangler.jsonc`，
+Cloudflare 构建时自己生成一份，资源目录是仓库根 `.`——根上有什么就传什么），
 域名 `naisho.space`。全站是静态文件，没有构建步骤，**一行第三方脚本都没有**。
 
 ## 现在有什么
@@ -32,5 +33,9 @@ App Store 审核会去抓 ASC 里填的那两个隐私政策 URL。**任何时�
 
 ## 改了怎么上线
 
-推到 `main`，Cloudflare Pages 自己部署。**和 app 出包完全无关**——不占 TestFlight 的上传配额，
+推到 `main`，Cloudflare 自己部署（`npx wrangler deploy`）。
+
+**根上的 `.assetsignore` 不许删**（Changming 10-14：「发布网站时 .git 文件夹被一起传了上去，以后发布时应该把它排除掉」）：
+资源目录就是仓库根，没有它 `.git` 会被当成网页文件一起传上去。格式同 `.gitignore`。
+`_headers`、`_redirects` 绝不能写进去——CSP / HSTS 和老地址的 301 都靠它们。**和 app 出包完全无关**——不占 TestFlight 的上传配额，
 也不受 `Scripts/cadence.py` 那套合版节奏管。
